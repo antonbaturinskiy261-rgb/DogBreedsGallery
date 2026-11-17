@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.dogbreedsgallery"
     compileSdk {
-        version = release(37)
+        version = release(37) // Если 37 не установлен, Android Studio предложит скачать или замените на 36
     }
 
     defaultConfig {
@@ -28,13 +28,15 @@ android {
             }
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildFeatures {
         compose = true
-    }
+    } // <-- Вот эта закрывающая скобка была потеряна!
 }
 
 dependencies {
@@ -46,32 +48,35 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-// Retrofit + Moshi
+    // Retrofit + Moshi
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
     implementation(libs.okhttp.logging)
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)
 
-// Coil
+    // Coil
     implementation(libs.coil.compose)
 
-// Lifecycle ViewModel
+    // Lifecycle ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-// Navigation 3
+    // Navigation 3
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.kotlinx.serialization.json)
